@@ -1,3 +1,5 @@
+import utils.QueryUtils;
+
 import java.sql.*;
 
 /**
@@ -19,8 +21,12 @@ public class MyTestConnection {
                             + resultSet.getString("surname") + " " + resultSet.getString(4));
                 }
 
-                statement.execute("insert into students(name, surname,email, phone)" +
-                        "VALUES('Pertras', 'Petrauskas', 'p.petraukas@kcs.com', '+37082364962398')");
+              /*  statement.execute("insert into students(name, surname,email, phone)" +
+                        "VALUES('Pertras', 'Petrauskas', 'p.petraukas@kcs.com', '+37082364962398')");*/
+
+                if(QueryUtils.isTableExist(connection, "students")){
+                    System.out.println("Lentele egzistuoja");
+                }
             }
 
         } catch (SQLException e) {
